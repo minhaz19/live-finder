@@ -5,7 +5,7 @@
 import React from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@react-native-vector-icons/ionicons';
 import { useTheme } from '../theme/ThemeContext';
 import ExploreScreen from '../screen/ExploreScreen';
 import FavoritesScreen from '../screen/FavoritesScreen';
