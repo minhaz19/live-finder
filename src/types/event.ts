@@ -1,4 +1,4 @@
-// ─── API Response ──────────────────────────────────────
+// API Response
 export interface EventSearchResponse {
   _embedded?: {
     events: Event[];
@@ -33,7 +33,7 @@ export interface EventDates {
   };
 }
 
-// ─── Search Params ─────────────────────────────────────
+// Search Params 
 export interface EventSearchParams {
   keyword?: string;
   city?: string;
@@ -129,3 +129,5 @@ export interface Event {
     attractions?: Attraction[];
   };
 }
+
+export interface EventDetailResponse extends Event {}

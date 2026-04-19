@@ -7,6 +7,7 @@ import {
     Text,
     RefreshControl,
     ActivityIndicator,
+    TouchableOpacity,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, { FadeIn } from 'react-native-reanimated';
@@ -29,11 +30,12 @@ import ErrorState from '../components/ErrorState';
 import type { Event } from '../types/event';
 import type { RootStackParamList } from '../navigation/types';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
+import Ionicons from '@react-native-vector-icons/ionicons';
 
 type NavProp = StackNavigationProp<RootStackParamList>;
 
 const ExploreScreen: React.FC = () => {
-    const { colors, isDark } = useTheme();
+    const { colors, isDark, toggleTheme } = useTheme();
     const insets = useSafeAreaInsets();
     const navigation = useNavigation<NavProp>();
     const dispatch = useAppDispatch();
@@ -154,12 +156,27 @@ const ExploreScreen: React.FC = () => {
             <Animated.View
                 entering={FadeIn.duration(600)}
                 style={[styles.header, { paddingTop: insets.top + 12 }]}>
-                <Text style={[styles.headerTitle, { color: colors.text }]}>
-                    Finder
-                </Text>
-                <Text style={[styles.headerSubtitle, { color: colors.textSecondary }]}>
-                    Discover amazing events near you
-                </Text>
+                <View style={styles.headerRow}>
+                    <View>
+                        <Text style={[styles.headerTitle, { color: colors.text }]}>
+                            Finder
+                        </Text>
+                        <Text style={[styles.headerSubtitle, { color: colors.textSecondary }]}>
+                            Discover amazing events near you
+                        </Text>
+                    </View>
+                    {/* Theme toggle */}
+                    <TouchableOpacity
+                        onPress={toggleTheme}
+                        style={[styles.iconButton, { backgroundColor: colors.searchBar }]}
+                        activeOpacity={0.7}>
+                        <Ionicons
+                            name={isDark ? 'sunny-outline' : 'moon-outline'}
+                            size={20}
+                            color={colors.text}
+                        />
+                    </TouchableOpacity>
+                </View>
             </Animated.View>
 
             {/* Search */}
@@ -219,10 +236,22 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingBottom: 4,
     },
+    headerRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+    },
     headerTitle: {
         fontSize: 32,
         fontWeight: '800',
         letterSpacing: -0.5,
+    },
+    iconButton: {
+        width: 42,
+        height: 42,
+        borderRadius: 21,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     headerSubtitle: {
         fontSize: 15,

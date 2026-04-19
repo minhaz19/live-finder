@@ -14,6 +14,7 @@ import Animated, {
   withSpring,
   withSequence,
 } from 'react-native-reanimated';
+import { Ionicons } from '@react-native-vector-icons/ionicons';
 import {useTheme} from '../theme/ThemeContext';
 import type {Event} from '../types/event';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -137,7 +138,11 @@ const EventCard: React.FC<EventCardProps> = ({event, index, onPress}) => {
                 styles.imagePlaceholder,
                 {backgroundColor: colors.surface},
               ]}>
-              <Text style={styles.placeholderEmoji}>🎫</Text>
+              <Ionicons
+                name="ticket-outline"
+                size={48}
+                color={colors.textTertiary}
+              />
             </View>
           )}
 
@@ -158,7 +163,11 @@ const EventCard: React.FC<EventCardProps> = ({event, index, onPress}) => {
             style={[styles.favoriteButton, heartAnimStyle]}
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
             activeOpacity={0.7}>
-            <Text style={styles.heartIcon}>{isFav ? '❤️' : '🤍'}</Text>
+            <Ionicons
+              name={isFav ? 'heart' : 'heart-outline'}
+              size={18}
+              color={isFav ? '#FF4D6D' : '#FFFFFF'}
+            />
           </AnimatedTouchable>
         </View>
 
@@ -171,7 +180,12 @@ const EventCard: React.FC<EventCardProps> = ({event, index, onPress}) => {
           </Text>
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoIcon}>📅</Text>
+            <Ionicons
+              name="calendar-outline"
+              size={14}
+              color={colors.primary}
+              style={styles.infoIcon}
+            />
             <Text
               style={[styles.infoText, {color: colors.textSecondary}]}
               numberOfLines={1}>
@@ -180,7 +194,12 @@ const EventCard: React.FC<EventCardProps> = ({event, index, onPress}) => {
           </View>
 
           <View style={styles.infoRow}>
-            <Text style={styles.infoIcon}>📍</Text>
+            <Ionicons
+              name="location-outline"
+              size={14}
+              color={colors.primary}
+              style={styles.infoIcon}
+            />
             <Text
               style={[styles.infoText, {color: colors.textSecondary}]}
               numberOfLines={1}>
@@ -238,9 +257,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  placeholderEmoji: {
-    fontSize: 48,
-  },
   categoryBadge: {
     position: 'absolute',
     top: 12,
@@ -267,9 +283,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  heartIcon: {
-    fontSize: 18,
-  },
   content: {
     padding: 16,
     gap: 8,
@@ -286,7 +299,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   infoIcon: {
-    fontSize: 13,
+    marginTop: 1,
   },
   infoText: {
     fontSize: 13,

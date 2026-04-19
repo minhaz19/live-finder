@@ -1,10 +1,10 @@
-import {createMMKV} from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
 export const storage = createMMKV({
   id: 'finder-storage',
 });
 
-// ─── Favorites Storage Helpers ─────────────────────────
+// Favorites Storage Helpers
 const FAVORITES_KEY = 'favorites_events';
 
 export const getFavoriteIds = (): string[] => {
@@ -13,18 +13,14 @@ export const getFavoriteIds = (): string[] => {
     if (raw) {
       return JSON.parse(raw);
     }
-  } catch {
-    // Return empty on parse error
-  }
+  } catch {}
   return [];
 };
 
 export const saveFavoriteIds = (ids: string[]): void => {
   try {
     storage.set(FAVORITES_KEY, JSON.stringify(ids));
-  } catch {
-    // Silently fail
-  }
+  } catch {}
 };
 
 export const addFavoriteId = (id: string): string[] => {
@@ -48,7 +44,7 @@ export const isFavorite = (id: string): boolean => {
   return getFavoriteIds().includes(id);
 };
 
-// ─── Favorites Event Data Storage ──────────────────────
+// Favorites Event Data Storage
 const FAVORITES_DATA_KEY = 'favorites_events_data';
 
 export const getFavoritesData = <T>(): T[] => {
@@ -57,16 +53,12 @@ export const getFavoritesData = <T>(): T[] => {
     if (raw) {
       return JSON.parse(raw);
     }
-  } catch {
-    // Return empty on parse error
-  }
+  } catch {}
   return [];
 };
 
 export const saveFavoritesData = <T>(events: T[]): void => {
   try {
     storage.set(FAVORITES_DATA_KEY, JSON.stringify(events));
-  } catch {
-    // Silently fail
-  }
+  } catch {}
 };

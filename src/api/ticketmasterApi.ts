@@ -1,11 +1,10 @@
-/**
- * RTK Query API definition for Ticketmaster Discovery API.
- * Handles event search with pagination and event detail fetching.
- */
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_CONFIG } from '../config/api';
-import type { EventSearchResponse, EventSearchParams } from '../types/event';
+import type {
+  EventSearchResponse,
+  EventSearchParams,
+  EventDetailResponse,
+} from '../types/event';
 
 export const ticketmasterApi = createApi({
   reducerPath: 'ticketmasterApi',
@@ -63,7 +62,18 @@ export const ticketmasterApi = createApi({
         return currentArg !== previousArg;
       },
     }),
+
+    //Get Event Details
+    getEventDetails: builder.query<EventDetailResponse, string>({
+      query: eventId => ({
+        url: `/events/${eventId}.json`,
+        params: {
+          apikey: API_CONFIG.API_KEY,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useSearchEventsQuery } = ticketmasterApi;
+export const { useSearchEventsQuery, useGetEventDetailsQuery } =
+  ticketmasterApi;

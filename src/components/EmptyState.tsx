@@ -10,7 +10,7 @@ import { useTheme } from '../theme/ThemeContext';
 interface EmptyStateProps {
     title?: string;
     message?: string;
-    icon?: string;
+    icon?: React.ReactNode;
 }
 
 const EmptyState: React.FC<EmptyStateProps> = ({
@@ -22,9 +22,13 @@ const EmptyState: React.FC<EmptyStateProps> = ({
 
     return (
         <View style={styles.container}>
-            <Animated.Text entering={ZoomIn.duration(500).springify()} style={styles.icon}>
-                {icon}
-            </Animated.Text>
+            <Animated.View entering={ZoomIn.duration(500).springify()} style={styles.iconWrap}>
+                {typeof icon === 'string' ? (
+                    <Animated.Text style={styles.icon}>{icon}</Animated.Text>
+                ) : (
+                    icon
+                )}
+            </Animated.View>
             <Animated.Text
                 entering={FadeIn.duration(600).delay(200)}
                 style={[styles.title, { color: colors.text }]}>
@@ -47,9 +51,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         paddingVertical: 60,
     },
+    iconWrap: {
+        marginBottom: 16,
+        minHeight: 64,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     icon: {
         fontSize: 64,
-        marginBottom: 16,
     },
     title: {
         fontSize: 20,
