@@ -176,16 +176,3 @@ This improves reliability for real-world network/API conditions.
 - Additional details endpoint: `/events/{eventId}.json`
 - Query params include `city`, `keyword`, `classificationName`, `size`, `page`, and `sort`.
 
-## Security Notes
-
-- Do not commit real keys.
-- `.env` is gitignored.
-- Android map key is injected via manifest placeholders (not hardcoded in manifest).
-
-If keys were ever committed previously, rotate them in provider dashboards.
-
-## Future Improvements
-
-- Add end-to-end tests for search and detail flows
-- Add iOS map key setup parity docs if needed per deployment environment
-- Add screenshot automation from emulator/simulator for release docs
