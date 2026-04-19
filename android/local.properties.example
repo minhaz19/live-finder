@@ -1,0 +1,5 @@
+# Copy this file to android/local.properties and fill your values.
+# local.properties is gitignored by default.
+
+sdk.dir=/Users/your-user/Library/Android/sdk
+MAPS_API_KEY=your_google_maps_android_api_key
