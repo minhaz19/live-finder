@@ -13,15 +13,15 @@ Core features:
 
 Explore
 
-![Explore](docs/screenshots/explore.png)
+<img src="docs/screenshots/explore.png" alt="Explore" width="220" />
 
 Event Details
 
-![Event Details](docs/screenshots/details.png)
+<img src="docs/screenshots/details.png" alt="Event Details" width="220" />
 
 Favorites
 
-![Favorites](docs/screenshots/favorites.png)
+<img src="docs/screenshots/favorites.png" alt="Favorites" width="220" />
 
 ## Tech Stack
 
