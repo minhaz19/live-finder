@@ -11,17 +11,9 @@ Core features:
 
 ## Screenshots
 
-Explore
-
-<img src="docs/screenshots/explore.png" alt="Explore" width="220" />
-
-Event Details
-
-<img src="docs/screenshots/details.png" alt="Event Details" width="220" />
-
-Favorites
-
-<img src="docs/screenshots/favorites.png" alt="Favorites" width="220" />
+| Explore | Event Details | Favorites |
+| --- | --- | --- |
+| <img src="docs/screenshots/explore.png" alt="Explore" width="220" /> | <img src="docs/screenshots/details.png" alt="Event Details" width="220" /> | <img src="docs/screenshots/favorites.png" alt="Favorites" width="220" /> |
 
 ## Tech Stack
 
